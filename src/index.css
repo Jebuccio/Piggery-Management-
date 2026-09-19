@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Outfit:wght@300;400;500;600&display=swap');
+@import 'tailwindcss';
+
+/* ADD THIS LINE FOR TAILWIND v4 CLASS-BASED DARK MODE */
+@variant dark (&:where(.dark, .dark *));
+
+html,
+body,
+#root {
+  min-height: 100vh;
+  height: 100%;
+  scroll-behavior: smooth;
+  background-color: var(--bg);
+}
+
+/* ── Neumorphic Design Tokens ── */
+
+:root {
+  --bg: #E0E5EC;
+  --bg-dark: #d1d9e6;
+  --fg: #4a5568;
+  --fg-muted: #718096;
+  --fg-strong: #2d3748;
+  --shadow-light: #ffffff;
+  --shadow-dark: #b8bec7;
+  --accent: #10b981;
+  --accent-hover: #059669;
+  --accent-fg: #ffffff;
+  --inset-shadow: inset 4px 4px 10px #b8bec7, inset -4px -4px 10px #ffffff;
+  --raised-shadow: 6px 6px 14px #b8bec7, -6px -6px 14px #ffffff;
+  --raised-shadow-sm: 4px 4px 8px #b8bec7, -4px -4px 8px #ffffff;
+  --pressed-shadow: inset 3px 3px 7px #b8bec7, inset -3px -3px 7px #ffffff;
+  --radius: 16px;
+  --radius-sm: 10px;
+  --font-display: 'Nunito', sans-serif;
+  --font-body: 'Outfit', sans-serif;
+}
+
+.dark {
+  --bg: #121212;
+  --bg-dark: #0d0d0d;
+  --fg: #c0c0c0;
+  --fg-muted: #888888;
+  --fg-strong: #e0e0e0;
+  --shadow-light: #1d1d1d;
+  --shadow-dark: #070707;
+  --accent: #10b981;
+  --accent-hover: #34d399;
+  --accent-fg: #000000;
+  --inset-shadow: inset 4px 4px 10px #070707, inset -4px -4px 10px #1d1d1d;
+  --raised-shadow: 6px 6px 14px #070707, -6px -6px 14px #1d1d1d;
+  --raised-shadow-sm: 4px 4px 8px #070707, -4px -4px 8px #1d1d1d;
+  --pressed-shadow: inset 3px 3px 7px #070707, inset -3px -3px 7px #1d1d1d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg);
+  color: var(--fg);
+  transition: background-color 0.4s ease, color 0.4s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+
+:root {
+  --bg: #E0E5EC;
+  --fg-strong: #1f2937;
+  --fg-muted: #6b7280;
+  --accent: #ec4899;
+}
+
+html.dark {
+  --bg: #121212;
+  --fg-strong: #f3f4f6;
+  --fg-muted: #9ca3af;
+  --accent: #f472b6;
+}
+
+
+
+/* ── Neumorphic Utilities ── */
+.neu-raised {
+  background: var(--bg);
+  box-shadow: var(--raised-shadow);
+  border-radius: var(--radius);
+}
+
+.neu-raised-sm {
+  background: var(--bg);
+  box-shadow: var(--raised-shadow-sm);
+  border-radius: var(--radius-sm);
+}
+
+.neu-inset {
+  background: var(--bg);
+  box-shadow: var(--inset-shadow);
+  border-radius: var(--radius-sm);
+}
+
+.neu-pressed {
+  box-shadow: var(--pressed-shadow) !important;
+  transform: translateY(1px);
+}
+
+.btn-accent {
+  background: var(--accent);
+  color: var(--accent-fg);
+  box-shadow: var(--raised-shadow-sm);
+  transition: all 0.2s ease;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+.btn-accent:hover {
+  background: var(--accent-hover);
+  box-shadow: 2px 2px 6px var(--shadow-dark), -2px -2px 6px var(--shadow-light);
+  transform: translateY(-1px);
+}
+
+.btn-accent:active {
+  box-shadow: var(--pressed-shadow);
+  transform: translateY(1px);
+}
+
+.btn-neu {
+  background: var(--bg);
+  box-shadow: var(--raised-shadow-sm);
+  transition: all 0.2s ease;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+.btn-neu:hover {
+  box-shadow: 4px 4px 10px var(--shadow-dark), -4px -4px 10px var(--shadow-light);
+}
+
+.btn-neu:active {
+  box-shadow: var(--pressed-shadow);
+  transform: translateY(1px);
+}
+
+@layer base {
+  body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
+
+/* Light Theme Neumorphism (#E0E5EC) */
+.light .neu-flat {
+  background: #e0e5ec;
+  box-shadow: 9px 9px 16px #bebebe, -9px -9px 16px #ffffff;
+}
+
+.light .neu-pressed {
+  background: #e0e5ec;
+  box-shadow: inset 6px 6px 10px #bebebe, inset -6px -6px 10px #ffffff;
+}
+
+.light .neu-button {
+  background: #e0e5ec;
+  box-shadow: 6px 6px 12px #bebebe, -6px -6px 12px #ffffff;
+}
+.light .neu-button:active {
+  box-shadow: inset 4px 4px 8px #bebebe, inset -4px -4px 8px #ffffff;
+}
+
+/* Dark Theme Neumorphism (#121212) */
+.dark .neu-flat {
+  background: #121212;
+  box-shadow: 8px 8px 16px #070707, -8px -8px 16px #1d1d1d;
+}
+
+.dark .neu-pressed {
+  background: #121212;
+  box-shadow: inset 5px 5px 10px #070707, inset -5px -5px 10px #1d1d1d;
+}
+
+.dark .neu-button {
+  background: #121212;
+  box-shadow: 5px 5px 10px #070707, -5px -5px 10px #1d1d1d;
+}
+.dark .neu-button:active {
+  box-shadow: inset 3px 3px 6px #070707, inset -3px -3px 6px #1d1d1d;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--shadow-dark); border-radius: 3px; }
+
+
